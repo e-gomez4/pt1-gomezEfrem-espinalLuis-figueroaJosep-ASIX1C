@@ -1,0 +1,48 @@
+@font-face {
+    font-family: clockicons;
+    src: url('/fonts/clockicons.ttf') format('truetype');
+  }
+
+body{
+    text-align: center;
+}
+/*----------------modo_claro------------------*/
+body.claro{
+    background-color: rgb(240, 239, 239);
+}
+body.claro .reloj{
+    font-family: 'clockicons', sans-serif;
+    color: rgb(137, 137, 137);
+    font-weight: normal;
+    
+}
+
+/*--------------modo_oscuro-----------------*/
+body.oscuro{
+    background-color: black;
+}
+body.oscuro>.reloj{
+    font-family: 'clockicons', sans-serif;
+    color: #FF9500;
+    font-weight: normal;
+    
+}
+/*body.oscuro>div>h1{
+    font-family: 'clockicons', sans-serif;
+    color: rgb(137, 137, 137);
+    font-weight: normal;
+}*/
+
+/*--------------------alarma-------------*/
+#habilitar{
+    background-color:  #4aae71;
+    color: white;
+    font-size:20px ;
+    border: none;
+}
+
+#habilitar:hover{
+    transition: transform 0.2s ease;
+    transform:scale( 1.1);
+    background-color: rgb(26, 142, 8);
+}
