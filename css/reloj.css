@@ -8,5 +8,18 @@ h1{
     color: rgb(248, 150, 50);
     font-weight: normal;
 }
-.alarma{ font-family: normal;
+.alar{ font-family: normal;
+}
+.hora{
+  font-family: normal;
+} 
+body{ background-color: black;
+align-items: center;
+text-align: center;}
+
+#horaActual{
+  font-size: 100px;
+}
+.alarma{
+  background-color: rgb(19, 19, 19);
 }
