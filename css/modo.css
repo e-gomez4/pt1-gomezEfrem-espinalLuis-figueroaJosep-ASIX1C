@@ -16,7 +16,12 @@ body.claro .reloj{
     font-weight: normal;
     
 }
-
+body.claro>.modo{
+    background-color: #5c4fbecc ;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+}
 /*--------------modo_oscuro-----------------*/
 body.oscuro{
     background-color: black;
@@ -27,11 +32,12 @@ body.oscuro>.reloj{
     font-weight: normal;
     
 }
-/*body.oscuro>div>h1{
-    font-family: 'clockicons', sans-serif;
-    color: rgb(137, 137, 137);
-    font-weight: normal;
-}*/
+body.oscuro>.modo{
+    background-color: #e1e1e1 ;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+}
 
 /*--------------------alarma-------------*/
 #habilitar{

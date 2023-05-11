@@ -17,10 +17,10 @@
     <script src="https://kit.fontawesome.com/9e616cad9e.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="claro" onload="actualizaReloj()">
+<body class="claro" onload="actualizaReloj(),alarmar()" >
     <button class="modo" onclick="toggleTheme()">
-        <span class="claro"> <i class="fa-solid fa-circle-half-stroke"></i> </span>
-        <span class="oscuro"> <i class="fa-solid fa-circle-half-stroke fa-rotate-180"> </i></span>
+        <span id="claro" style="display: none;"> <i class="fa-solid fa-circle-half-stroke"></i> </span>
+        <span id="oscuro"> <i class="fa-solid fa-circle-half-stroke fa-rotate-180"> </i></span>
     </button>
     <div class="ruleta">
     </div>
