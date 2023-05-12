@@ -73,6 +73,8 @@ function girarRuleta() {
     velocidadRotacion = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
     const tiempoTotal = (vueltas * anguloPorVuelta) / velocidadRotacion * 1000;
 
+    sonido.play();
+
     const interval = setInterval(() => {
         anguloActual += velocidadRotacion * Math.PI / 180;
 
@@ -86,12 +88,10 @@ function girarRuleta() {
             clearInterval(interval);
             const indiceGanador = Math.floor(anguloActual / anguloPorVuelta);
             const nombreGanador = nombres[indiceGanador];
-            alert(`El ganador es ${nombreGanador}!`);
+            document.getElementById("ganador").textContent = `El ganador es ${nombreGanador}!`;
             esGirando = false;
-        } else {
             sonido.pause();
             sonido.currentTime = 0;
-            sonido.play();
         }
     }, velocidadRotacion);
 
@@ -99,7 +99,9 @@ function girarRuleta() {
         clearInterval(interval);
         const indiceGanador = Math.floor(anguloActual / anguloPorVuelta);
         const nombreGanador = nombres[indiceGanador];
-        alert(`El ganador es ${nombreGanador}!`);
+        document.getElementById("ganador").textContent = `El ganador es ${nombreGanador}!`;
         esGirando = false;
+        sonido.pause();
+        sonido.currentTime = 0;
     }, tiempoTotal);
 }

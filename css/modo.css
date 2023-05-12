@@ -6,6 +6,7 @@
 body{
     text-align: center;
 }
+
 /*----------------modo_claro------------------*/
 body.claro{
     background-color: rgb(240, 239, 239);
@@ -21,6 +22,10 @@ body.claro>.modo{
     font-size: 20px;
     border: none;
     border-radius: 10px;
+}
+body.claro #ganador{
+margin-top: 45px;
+  color: rgb(137, 137, 137);
 }
 /*--------------modo_oscuro-----------------*/
 body.oscuro{
@@ -38,7 +43,10 @@ body.oscuro>.modo{
     border: none;
     border-radius: 10px;
 }
-
+body.oscuro #ganador{
+margin-top: 45px;
+  color: #FF9500;
+}
 /*--------------------alarma-------------*/
 #habilitar{
     background-color:  #4aae71;
