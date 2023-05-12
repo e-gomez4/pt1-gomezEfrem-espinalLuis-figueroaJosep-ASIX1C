@@ -26,7 +26,16 @@
     </div>
     <div class="reloj">
         <h1 id="horaActual">hh:mm:ss</h1>
+        <select id="selectSonido">
+            <option value="./song/Weather_alarm_mi.mp3">Weather_alarm</option>
+            <option value="./song/Morning_Flower.mp3">Morning_Flower</option>
+            <option value="sonido3.mp3">Sonido 3</option>
+            <!-- Agrega más opciones de sonido según tus necesidades -->
+          </select>
+        
+        <p></p>
         <input type="time" id="horaAlarma" >
+                <p></p>
         <button id="habilitar" onclick="alarmar()">Habilitar alarma</button>
             <div class="alarma">
             <h1 class="alar">Alarma</h1>
