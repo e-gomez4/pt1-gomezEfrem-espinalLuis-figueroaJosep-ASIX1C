@@ -38,16 +38,6 @@ function dibujarRuleta() {
         ctx.fillText(nombre, radio - 10, 0);
         ctx.restore();
     }
-
-    /*// Dibujar la flecha
-    ctx.beginPath();
-    ctx.moveTo(x + radio - 20, y);
-    ctx.lineTo(x + radio - 5, y - 10);
-    ctx.lineTo(x + radio - 5, y + 10);
-    ctx.closePath();
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();*/
 }
 
 function reiniciarRuleta() {
