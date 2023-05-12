@@ -1,105 +1,115 @@
-const array_concursantes=
-    [
-        'Daniela Salvador Caballero'
-        ,'LeoGarcia01'
-        ,'Gaspak'
-        ,'Oxmar Yamith'
-        ,'Mauro Toranzo'
-        ,'Gerardo Garcia Hernandez'
-        ,'Pierre Zurita Ramirez'
-        ,'Pierre Zurita Ramirez'
-        ,'Daniela Salvador Caballero'
-        ,'samp play'
-        ,'Eduardo Joel Paucarpura Sanchez'
-        ,'Anthony Espino'
-        ,'Jordan Team'
-        ,'Gerardo Garcia Hernandez'
-        ,'Anthony Espino'
-        ,'Oxmar Yamith'
-        ,'Oxmar Yamith'
-        ,'Oxmar Yamith'
-        ,'Oxmar Yamith'
-        ,'Oxmar Yamith'
-        ,'Gerardo Garcia Hernandez'
-        ,'TheComicalCanadian'
-    ];
-document.addEventListener('DOMContentLoaded', function() {
-    let pos_ini=0;
-    let clic=0;
-    let grados_girados = 0; // añadido
+const nombres = ["Juan", "Pedro", "María", "Ana", "Luis", "Sofía"];
+const colores = ["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff"];
 
-    function sortear(){
-        if (clic==0) {
-            let canvas=document.getElementById("idcanvas");
-            let grados_objetivo = Math.floor(Math.random() * (1440 - 720 + 1)) + 720; // genera un número aleatorio de grados (entre 2 y 4 vueltas completas)
-            grados_girados = 0;
-            movement=setInterval(function(){
-                pos_ini+=10;
-                grados_girados += 10; // aumenta los grados girados en cada iteración
-                canvas.style.transform='rotate('+pos_ini+'deg)';
-                if (grados_girados >= grados_objetivo) { // detiene la ruleta al alcanzar el número de grados objetivo
-                    clearInterval(movement);
-                    clic=0;
-                    document.getElementById("idestado").innerHTML="Sortear";
-                }
-            },10);
-            clic=1;
-            document.getElementById("idestado").innerHTML="Detener";
-        }else{
-            clearInterval(movement);
-            clic=0;
-            document.getElementById("idestado").innerHTML="Sortear";
+let anguloActual = 0;
+let rotacionActual = 0;
+let velocidadRotacion = 0;
+let esGirando = false;
+
+function dibujarRuleta() {
+    const canvas = document.getElementById("ruleta");
+    const ctx = canvas.getContext("2d");
+
+    const x = canvas.width / 2;
+    const y = canvas.height / 2;
+    const radio = Math.min(x, y) * 0.8;
+    const anguloPorSeccion = (2 * Math.PI) / nombres.length;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < nombres.length; i++) {
+        const nombre = nombres[i];
+        const inicio = i * anguloPorSeccion;
+        const fin = (i + 1) * anguloPorSeccion;
+
+        ctx.beginPath();
+        ctx.arc(x, y, radio, inicio, fin);
+        ctx.lineTo(x, y);
+        ctx.fillStyle = colores[i % colores.length];
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(inicio + (anguloPorSeccion / 2));
+        ctx.textAlign = "right";
+        ctx.fillStyle = "black";
+        ctx.font = "bold 16px Arial";
+        ctx.fillText(nombre, radio - 10, 0);
+        ctx.restore();
+    }
+
+    /*// Dibujar la flecha
+    ctx.beginPath();
+    ctx.moveTo(x + radio - 20, y);
+    ctx.lineTo(x + radio - 5, y - 10);
+    ctx.lineTo(x + radio - 5, y + 10);
+    ctx.closePath();
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();*/
+}
+
+function reiniciarRuleta() {
+    const canvas = document.getElementById("ruleta");
+    const sonido = document.getElementById("sonido");
+
+    esGirando = false;
+    anguloActual = 0;
+    rotacionActual = 0;
+    velocidadRotacion = 0;
+
+    canvas.style.transform = `rotate(${rotacionActual}deg)`;
+    sonido.pause();
+    sonido.currentTime = 0;
+
+    dibujarRuleta();
+}
+
+function girarRuleta() {
+    reiniciarRuleta()
+    if (esGirando) {
+        return;
+    }
+
+    esGirando = true;
+
+    const canvas = document.getElementById("ruleta");
+    const sonido = document.getElementById("sonido");
+
+    const vueltas = Math.floor(Math.random() * nombres.length) + nombres.length;
+    const anguloPorVuelta = (2 * Math.PI) / nombres.length;
+
+    velocidadRotacion = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+    const tiempoTotal = (vueltas * anguloPorVuelta) / velocidadRotacion * 1000;
+
+    const interval = setInterval(() => {
+        anguloActual += velocidadRotacion * Math.PI / 180;
+
+        if (anguloActual >= (2 * Math.PI)) {
+            anguloActual -= (2 * Math.PI);
         }
-    }
 
-    let canvas=document.getElementById("idcanvas");
-    let context=canvas.getContext("2d");
-    let center=canvas.width/2;
-
-    context.beginPath();
-    context.moveTo(center,center);
-    context.arc(center,center,center,0, 2*Math.PI);
-    context.lineTo(center,center);
-    context.fillStyle ='#33333333';
-    context.fill();
-
-    context.beginPath();
-    context.moveTo(center,center);
-    context.arc(center,center,center-10,0, 2*Math.PI);
-    context.lineTo(center,center);
-    context.fillStyle ='black';
-    context.fill();
-
-    for (var i = 0; i < array_concursantes.length; i++) {
-        context.beginPath();
-        context.moveTo(center,center);
-        context.arc(center,center,center-20,i*2*Math.PI/array_concursantes.length, (i+1)*2*Math.PI/array_concursantes.length);
-        context.lineTo(center,center);
-        context.fillStyle =random_color();
-        context.fill();
-
-        context.save();
-        context.translate(center, center);
-        context.rotate(3*2*Math.PI/(5*array_concursantes.length)+i*2*Math.PI/array_concursantes.length);
-        context.translate(-center, -center);
-        context.font = "13px Comic Sans MS";
-        context.textAlign = "right";
-        context.fillStyle = "white";
-        context.fillText(array_concursantes[i], canvas.width-30, center);
-        context.restore();
-    }
-
-    let movement;
-
-    function random_color(){
-        let ar_digit=['2','3','4','5','6','7','8','9'];
-        let color='';
-        let i=0;
-        while(i<6){
-            let pos=Math.round(Math.random()*(ar_digit.length-1));
-            color=color+''+ar_digit[pos];
-            i++;
+        rotacionActual += velocidadRotacion;
+        canvas.style.transform = `rotate(${rotacionActual}deg)`;
+        if (rotacionActual >= (360 * vueltas)) {
+            clearInterval(interval);
+            const indiceGanador = Math.floor(anguloActual / anguloPorVuelta);
+            const nombreGanador = nombres[indiceGanador];
+            alert(`El ganador es ${nombreGanador}!`);
+            esGirando = false;
+        } else {
+            sonido.pause();
+            sonido.currentTime = 0;
+            sonido.play();
         }
-        return '#'+color;
-    }
-});
+    }, velocidadRotacion);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        const indiceGanador = Math.floor(anguloActual / anguloPorVuelta);
+        const nombreGanador = nombres[indiceGanador];
+        alert(`El ganador es ${nombreGanador}!`);
+        esGirando = false;
+    }, tiempoTotal);
+}
