@@ -8,6 +8,7 @@
     <meta name="description" content="M04 UF3 JavaScript">
     <meta name="dateCreated" content="05/05/2023">
     <!--CSS-->
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/reloj.css">
     <link rel="stylesheet" href="./css/modo.css">
     <link rel="stylesheet" href="./css/ruleta.css">
@@ -15,15 +16,29 @@
     <script type="text/javascript" src="./js/reloj.js"></script>
     <script type="text/javascript" src="./js/modo.js"></script>
     <script type="text/javascript" src="./js/ruleta.js"></script>
+=======
+    <link rel="stylesheet" href="css/reloj.css">
+    <link rel="stylesheet" href="css/modo.css">
+    <link rel="stylesheet" href="css/ruleta.css">
+    <!--JS-->
+    <script type="text/javascript" src="js/reloj.js"></script>
+    <script type="text/javascript" src="js/modo.js"></script>
+    <script type="text/javascript" src="js/ruleta.js"></script>
+>>>>>>> 65823b3 (a)
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/9e616cad9e.js" crossorigin="anonymous"></script>
 </head>
 
+<<<<<<< HEAD
 <body class="claro" onload="actualizaReloj()" >
+=======
+<body class="claro" onload="actualizaReloj(),alarmar(),dibujarRuleta()" >
+>>>>>>> 65823b3 (a)
     <button class="modo" onclick="toggleTheme()">
         <span id="claro" style="display: none;"> <i class="fa-solid fa-circle-half-stroke"></i> </span>
         <span id="oscuro"> <i class="fa-solid fa-circle-half-stroke fa-rotate-180"> </i></span>
     </button>
+<<<<<<< HEAD
     <div class="contenedor">
         <h1>Concursantes</h1>
         <div class="concursantes">
@@ -32,6 +47,12 @@
             <button onclick="sortear()"><span id="idestado">Sortear</span></button>
             <div class="mark-winner"></div>
         </div>
+=======
+    <div>
+        <canvas id="ruleta" width="400" height="400"></canvas>
+        <button onclick="girarRuleta()">Girar ruleta</button>
+        <audio id="sonido" src="https://www.soundjay.com/button/sounds/button-3.mp3"></audio>
+>>>>>>> 65823b3 (a)
     </div>
     <div class="reloj">
         <h1 id="horaActual">hh:mm:ss</h1>
