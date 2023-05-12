@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <title>EinesAula</title>
     <meta name="author" content="">
-    <meta name="description" content="M04 UF3 Java">
-    <meta name="dateCreated" content="5/05/2023">
+    <meta name="description" content="M04 UF3 JavaScript">
+    <meta name="dateCreated" content="05/05/2023">
     <!--CSS-->
     <link rel="stylesheet" href="./css/reloj.css">
     <link rel="stylesheet" href="./css/modo.css">
+    <link rel="stylesheet" href="./css/ruleta.css">
     <!--JS-->
     <script type="text/javascript" src="./js/reloj.js"></script>
     <script type="text/javascript" src="./js/modo.js"></script>
+    <script type="text/javascript" src="./js/ruleta.js"></script>
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/9e616cad9e.js" crossorigin="anonymous"></script>
 </head>
@@ -22,7 +24,14 @@
         <span id="claro" style="display: none;"> <i class="fa-solid fa-circle-half-stroke"></i> </span>
         <span id="oscuro"> <i class="fa-solid fa-circle-half-stroke fa-rotate-180"> </i></span>
     </button>
-    <div class="ruleta">
+    <div class="contenedor">
+        <h1>Concursantes</h1>
+        <div class="concursantes">
+            <canvas id="idcanvas" width="600" height="600"></canvas>
+            <br>
+            <button onclick="sortear()"><span id="idestado">Sortear</span></button>
+            <div class="mark-winner"></div>
+        </div>
     </div>
     <div class="reloj">
         <h1 id="horaActual">hh:mm:ss</h1>
