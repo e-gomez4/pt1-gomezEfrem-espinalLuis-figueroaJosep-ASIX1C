@@ -8,16 +8,16 @@
     <meta name="description" content="M04 UF3 Java">
     <meta name="dateCreated" content="5/05/2023">
     <!--CSS-->
-    <link rel="stylesheet" href="css/reloj.css">
-    <link rel="stylesheet" href="css/modo.css">
+    <link rel="stylesheet" href="./css/reloj.css">
+    <link rel="stylesheet" href="./css/modo.css">
     <!--JS-->
-    <script type="text/javascript" src="js/reloj.js"></script>
-    <script type="text/javascript" src="js/modo.js"></script>
+    <script type="text/javascript" src="./js/reloj.js"></script>
+    <script type="text/javascript" src="./js/modo.js"></script>
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/9e616cad9e.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="claro" onload="actualizaReloj(),alarmar()" >
+<body class="claro" onload="actualizaReloj()" >
     <button class="modo" onclick="toggleTheme()">
         <span id="claro" style="display: none;"> <i class="fa-solid fa-circle-half-stroke"></i> </span>
         <span id="oscuro"> <i class="fa-solid fa-circle-half-stroke fa-rotate-180"> </i></span>
@@ -26,7 +26,8 @@
     </div>
     <div class="reloj">
         <h1 id="horaActual">hh:mm:ss</h1>
-        <button id="habilitar" >Habilitar alarma</button>
+        <input type="time" id="horaAlarma" >
+        <button id="habilitar" onclick="configurarAlarma()" >Habilitar alarma</button>
             <div class="alarma">
             <h1 class="alar">Alarma</h1>
             <h1 id="hfin">hh:mm:ss </h1>
