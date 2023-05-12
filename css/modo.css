@@ -49,6 +49,6 @@ body.oscuro>.modo{
 
 #habilitar:hover{
     transition: transform 0.2s ease;
-    transform:scale( 1.1);
+    transform:scale( 1.05);
     background-color: rgb(26, 142, 8);
 }

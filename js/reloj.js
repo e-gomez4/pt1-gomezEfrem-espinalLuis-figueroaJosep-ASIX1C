@@ -41,6 +41,7 @@ function alarmar() {
   var tiempoActual = hora * 3600 + minuto * 60 + segundo;
   var tiempoAlarma = horaSeleccionada * 3600 + minutoSeleccionado * 60 + segundoAlarma;
 
+  
 
   var tiempoFaltante = tiempoAlarma - tiempoActual;
 
@@ -53,6 +54,9 @@ function alarmar() {
 
   var hfin = document.getElementById("hfin");
   hfin.innerHTML = horaSeleccionada + ":" + minutoSeleccionado + ":" + segundoAlarma;
+
+  contador.style.display = "block";
+  hfin.style.display = "block";
 
   if (tiempoFaltante > 0) {
     setTimeout(alarmar, 1000);

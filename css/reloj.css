@@ -11,6 +11,7 @@
 
 #hfin, #contador {
   font-weight: normal;
+  display: none;
 }
 /*.alarma{
   background-color: rgb(19, 19, 19);
