@@ -24,7 +24,6 @@ body.claro>.modo{
     border-radius: 10px;
 }
 body.claro #ganador{
-margin-top: 45px;
   color: rgb(137, 137, 137);
 }
 /*--------------modo_oscuro-----------------*/
@@ -44,7 +43,6 @@ body.oscuro>.modo{
     border-radius: 10px;
 }
 body.oscuro #ganador{
-margin-top: 45px;
   color: #FF9500;
 }
 /*--------------------alarma-------------*/
