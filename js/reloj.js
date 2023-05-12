@@ -18,30 +18,29 @@ function actualizaReloj(){
 }
  
 
-function configurarAlarma() {
+function alarmar() {
+  var momentoActual = new Date();
+  var hora = momentoActual.getHours();
+  var minuto = momentoActual.getMinutes();
+  var segundo = momentoActual.getSeconds();
+
   var inputHora = document.getElementById("horaAlarma");
   var horaAlarma = inputHora.value;
-  var hora = parseInt(horaAlarma[0]);
-  var minuto = parseInt(horaAlarma[1]);
-  var segundo = parseInt(horaAlarma[2]);
 
-  var momentoActual = new Date();
-  var horaActual = momentoActual.getHours();
-  var minutoActual = momentoActual.getMinutes();
-  var segundoActual = momentoActual.getSeconds();
+  if (horaAlarma === "") {
+    alert("Por favor, selecciona una hora válida.");
+    return;
+  }
 
-  if (horaActual < 10) horaActual = "0" + horaActual
-    if (minutoActual < 10) minutoActual = "0" + minutoActual
-    if ( minutoActual < 10) segundoActual = "0" + segundoActual
+  var partesHora = horaAlarma.split(":");
+  var horaSeleccionada = parseInt(partesHora[0]);
+  var minutoSeleccionado = parseInt(partesHora[1]);
 
-  var tiempoActual = horaActual * 3600 + minutoActual * 60 + segundoActual;
-  var tiempoAlarma = hora * 3600 + minuto * 60 + segundo;
+  var segundoAlarma = 0;
 
+  var tiempoActual = hora * 3600 + minuto * 60 + segundo;
+  var tiempoAlarma = horaSeleccionada * 3600 + minutoSeleccionado * 60 + segundoAlarma;
 
-
-  /*if (tiempoAlarma <= tiempoActual) {
-    tiempoAlarma += 24 * 3600;  // Sumar 24 horas si la alarma ya pasó en el día actual
-  }*/
 
   var tiempoFaltante = tiempoAlarma - tiempoActual;
 
@@ -53,11 +52,12 @@ function configurarAlarma() {
   contador.innerHTML = horasFaltantes + ":" + minutosFaltantes + ":" + segundosFaltantes;
 
   var hfin = document.getElementById("hfin");
-  hfin.innerHTML = hora + ":" + minuto + ":" + segundo;
+  hfin.innerHTML = horaSeleccionada + ":" + minutoSeleccionado + ":" + segundoAlarma;
 
   if (tiempoFaltante > 0) {
-    setTimeout(configurarAlarma, 1000);
+    setTimeout(alarmar, 1000);
   } else {
     alert("¡Es hora de la alarma!");
   }
 }
+alarmar()
