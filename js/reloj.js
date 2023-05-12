@@ -61,7 +61,14 @@ function alarmar() {
   if (tiempoFaltante > 0) {
     setTimeout(alarmar, 1000);
   } else {
-    alert("¡Es hora de la alarma!");
+    /*alert("¡Es hora de la alarma!");*/
+       // Obtener el valor seleccionado del menú de configuración
+       var selectSonido = document.getElementById("selectSonido");
+       var rutaSonido = selectSonido.value;
+   
+       // Reproducir el sonido
+       var sound = new Audio(rutaSonido);
+       sound.play();
   }
 }
 alarmar()
